@@ -20,13 +20,6 @@ and serve as input to for metatranscriptome analysis with [nf-core/rnaseq](https
 
 Input data is a fasta file, uncompressed or compressed (`*.gz`). In the current implementation, the input file name may not contain `.part_`.
 
-### Prepare databases
-
-```bash
-singularity pull  --name bakta-1.10.4--pyhdfd78af_0.img https://depot.galaxyproject.org/singularity/bakta:1.10.4--pyhdfd78af_0
-singularity exec bakta-1.10.4--pyhdfd78af_0.img bakta_db download --type full --output bakta_db_full
-```
-
 ### Run the pipeline
 
 #### With Prokka
@@ -62,15 +55,15 @@ NXF_VER=24.04.4 nextflow run d4straub/metagenomeannotation -r main \
 
 ### Tips & warnings
 
-The input file name may not contain `.part_`.
+- The input file name may not contain `.part_`.
 
-Use a config to specify your cluster specifications, e.g. the here available `cfc_resources.config` by appending to the above command `-c cfc_resources.config`.
+- Use a config to specify your cluster specifications, e.g. the here available `cfc_resources.config` by appending to the above command `-c cfc_resources.config`.
 
-The number of chunks can be as high as possible, but it was here tested only with 999, i.e. `--nchunks 999`, higher numbers might upset script input limits.
+- The number of chunks can be as high as possible, but it was here tested only with 999, i.e. `--nchunks 999`, higher numbers might upset script input limits.
 
-Alternatively, the number of chunks can be omitted (i.e. not using `--nchunks`) but rather the size of chunks can be defined with `--chunksize`.
+- Alternatively, the number of chunks can be omitted (i.e. not using `--nchunks`) but rather the size of chunks can be defined with `--chunksize`.
 
-For maximum execution speed make sure that `executor.queueSize` is at least as large as the number of chunks with `--nchunks`. The `cfc_resources.config` uses `executor.queueSize = 1000`.
+- For maximum execution speed make sure that `executor.queueSize` is at least as large as the number of chunks with `--nchunks`. The `cfc_resources.config` uses `executor.queueSize = 1000`.
 
 ## Output
 
@@ -93,7 +86,7 @@ Please cite all employed tools, such as
 
 - [Nextflow](https://pubmed.ncbi.nlm.nih.gov/28398311/)
 
-> Di Tommaso P, Chatzou M, Floden EW, Barja PP, Palumbo E, Notredame C. Nextflow enables reproducible computational workflows. Nat Biotechnol. 2017 Apr 11;35(4):316-319. doi: 10.1038/nbt.3820. PubMed PMID: 28398311.
+  > Di Tommaso P, Chatzou M, Floden EW, Barja PP, Palumbo E, Notredame C. Nextflow enables reproducible computational workflows. Nat Biotechnol. 2017 Apr 11;35(4):316-319. doi: 10.1038/nbt.3820. PubMed PMID: 28398311.
 
 - [Singularity](https://pubmed.ncbi.nlm.nih.gov/28494014/)
 
